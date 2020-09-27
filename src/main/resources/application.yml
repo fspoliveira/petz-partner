@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://petzdbsrv.ctitxp4rxxty.sa-east-1.rds.amazonaws.com:5432/petzdb
+    username: postgres
+    password: postgres
+  
+jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+    ddl-auto: validate
