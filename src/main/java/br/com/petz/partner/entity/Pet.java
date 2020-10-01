@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.petz.partner.model.CustomerModel;
+import br.com.petz.partner.model.PetModel;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-public class Customer {
+public class Pet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,34 +29,21 @@ public class Customer {
 
 	private String name;
 
-	private String cpfOrCnpj;
+	private String type;
 
-	private String dateOfBirth;	
+	private String active;
 
-	private String streetName;
+	public PetModel fromEntityToModel() {
 
-	private String number;
+		PetModel petModel = new PetModel();
+		BeanUtils.copyProperties(this, petModel);
 
-	private String complement;
-
-	private String neighbourhood;
-
-	private String city;
-
-	private String state;
-
-	private String country;
-
-	public CustomerModel fromEntityToModel() {
-
-		CustomerModel customerModel = new CustomerModel();
-		BeanUtils.copyProperties(this, customerModel);
-
-		return customerModel;
+		return petModel;
 	}
 
-	public Customer fromModelToEntity(CustomerModel customerModel) {
-		BeanUtils.copyProperties(customerModel, this);
+	public Pet fromModelToEntity(PetModel petModel) {
+		BeanUtils.copyProperties(petModel, this);
 		return this;
 	}
+
 }

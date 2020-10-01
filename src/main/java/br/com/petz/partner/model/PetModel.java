@@ -12,33 +12,14 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-public class CustomerModel {
+public class PetModel {
 
 	@NonNull
 	private String name;
 
 	@NonNull
-	private String cpfOrCNPJ;
+	private String type;
 
 	@NonNull
-	private String dateOfBirth;
-
-	@NonNull
-	private String streetName;
-
-	@NonNull
-	private String number;
-	
-	private String complement;
-	
-	private String neighbourhood;
-
-	@NonNull
-	private String city;
-
-	@NonNull
-	private String state;
-
-	@NonNull
-	private String country;
+	private String active;
 }

@@ -9,25 +9,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.petz.partner.entity.Customer;
-import br.com.petz.partner.exception.PetzCustomerNotFoundException;
+import br.com.petz.partner.exception.PetzPetNotFoundException;
 import br.com.petz.partner.model.CustomerModel;
 import br.com.petz.partner.repository.PetzCustomerRepository;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Service
 public class PetzCustomerService {
-	
-	public PetzCustomerService() {
-		super();
-	}
 	
 	@Autowired
 	PetzCustomerRepository petzCustomerRepository;
 
-	public ResponseEntity<CustomerModel> save(CustomerModel stAddressModel) {
+	public ResponseEntity<CustomerModel> save(CustomerModel customerModel) {
 		Customer petzCustomer = petzCustomerRepository
-				.save(new Customer().fromModelToEntity(stAddressModel));
+				.save(new Customer().fromModelToEntity(customerModel));
 		return new ResponseEntity<>(petzCustomer.fromEntityToModel(), HttpStatus.CREATED);
 	}
 
@@ -36,7 +30,7 @@ public class PetzCustomerService {
 	}
 
 	public Customer findById(UUID id) {
-		return petzCustomerRepository.findById(id).orElseThrow(PetzCustomerNotFoundException::new);
+		return petzCustomerRepository.findById(id).orElseThrow(PetzPetNotFoundException::new);
 	}
 
 	public void delete(UUID id) {
@@ -44,7 +38,7 @@ public class PetzCustomerService {
 	}
 
 	public Customer update(Customer petzCustomer) {
-		petzCustomerRepository.findById(petzCustomer.getId()).orElseThrow(PetzCustomerNotFoundException::new);
+		petzCustomerRepository.findById(petzCustomer.getId()).orElseThrow(PetzPetNotFoundException::new);
 		return petzCustomerRepository.save(petzCustomer);
 	}
 }
