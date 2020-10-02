@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import br.com.petz.partner.entity.Customer;
 
 @Repository
-public interface PetzCustomerRepository extends JpaRepository<Customer, UUID> {
+public interface CustomerRepository extends JpaRepository<Customer, UUID> {
 
 }

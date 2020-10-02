@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 import br.com.petz.partner.entity.Customer;
 import br.com.petz.partner.exception.PetzPetNotFoundException;
 import br.com.petz.partner.model.CustomerModel;
-import br.com.petz.partner.repository.PetzCustomerRepository;
+import br.com.petz.partner.repository.CustomerRepository;
 
 @Service
 public class PetzCustomerService {
 	
 	@Autowired
-	PetzCustomerRepository petzCustomerRepository;
+	CustomerRepository petzCustomerRepository;
 
 	public ResponseEntity<CustomerModel> save(CustomerModel customerModel) {
 		Customer petzCustomer = petzCustomerRepository

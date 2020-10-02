@@ -20,7 +20,7 @@ import br.com.petz.partner.model.CustomerModel;
 import br.com.petz.partner.service.PetzCustomerService;
 
 @RestController
-@RequestMapping("/petz/api/partner/customer")
+@RequestMapping("/partner/api/v1/customer")
 public class PetzCustomerController {
 
 	@Autowired
